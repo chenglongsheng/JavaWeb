@@ -22,4 +22,22 @@
         <url-pattern>/session</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Session1Servlet</servlet-name>
+        <servlet-class>person.cls.servlet.Session01Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Session1Servlet</servlet-name>
+        <url-pattern>/session1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Session2Servlet</servlet-name>
+        <servlet-class>person.cls.servlet.Session02Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Session2Servlet</servlet-name>
+        <url-pattern>/session2</url-pattern>
+    </servlet-mapping>
+
 </web-app>
