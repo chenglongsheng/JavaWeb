@@ -40,4 +40,22 @@
         <url-pattern>/session2</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ForwardAndRedirectServlet1</servlet-name>
+        <servlet-class>person.cls.servlet.ForwardAndRedirectServlet1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ForwardAndRedirectServlet1</servlet-name>
+        <url-pattern>/forwardAndRedirect1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ForwardAndRedirectServlet2</servlet-name>
+        <servlet-class>person.cls.servlet.ForwardAndRedirectServlet2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ForwardAndRedirectServlet2</servlet-name>
+        <url-pattern>/forwardAndRedirect2</url-pattern>
+    </servlet-mapping>
+
 </web-app>
