@@ -15,4 +15,10 @@ public interface FruitDAO {
     // 查询所有库存列表
     List<Fruit> getFruitList();
 
+    // 根据id获取数据
+    Fruit getFruitInfo(Integer fid);
+
+    // 更新
+    void updateFruitById(Fruit fruit);
+
 }
