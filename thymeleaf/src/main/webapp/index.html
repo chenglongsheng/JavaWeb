@@ -8,6 +8,7 @@
 <body>
 <div id="div_container">
     <div id="div_fruit_list">
+        <p class="center f30">欢迎使用水果库存后台管理系统</p>
         <table id="tbl_fruit">
             <tr>
                 <th class="w20">名称</th>
@@ -22,10 +23,18 @@
                 <td><a th:text="${fruit.fname}" th:href="@{/edit.do(fid=${fruit.fid})}">苹果</a></td>
                 <td th:text="${fruit.price}">5</td>
                 <td th:text="${fruit.fcount}">20</td>
-                <td><img src="imgs/del.jpg" class="delImg" alt="delete"/></td>
+                <td><img src="imgs/del.jpg" class="delImg" alt="delete" th:onclick="|delFruit(${fruit.fid})|"/>
+                </td>
             </tr>
         </table>
     </div>
 </div>
+<script>
+    function delFruit(fid) {
+        if (confirm("是否确认删除？")) {
+            window.location.href = 'del.do?fid=' + fid;
+        }
+    }
+</script>
 </body>
 </html>

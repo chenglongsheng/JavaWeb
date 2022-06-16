@@ -21,4 +21,7 @@ public interface FruitDAO {
     // 更新
     void updateFruitById(Fruit fruit);
 
+    // 删除
+    void delFruitById(Integer fid);
+
 }
