@@ -15,6 +15,9 @@ public interface FruitDAO {
     // 查询所有库存列表
     List<Fruit> getFruitList();
 
+    // 分页查询
+    List<Fruit> getFruitList(Integer pageNo);
+
     // 根据id获取数据
     Fruit getFruitInfo(Integer fid);
 

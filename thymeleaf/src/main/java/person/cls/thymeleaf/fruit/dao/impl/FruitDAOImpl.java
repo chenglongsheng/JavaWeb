@@ -19,6 +19,11 @@ public class FruitDAOImpl extends BaseDAO<Fruit> implements FruitDAO {
     }
 
     @Override
+    public List<Fruit> getFruitList(Integer pageNo) {
+        return super.executeQuery("select * from t_fruit limit ?, 5", (pageNo - 1) * 5);
+    }
+
+    @Override
     public Fruit getFruitInfo(Integer fid) {
         return super.load("select * from t_fruit where fid=?", fid);
     }
