@@ -24,4 +24,7 @@ public interface FruitDAO {
     // 删除
     void delFruitById(Integer fid);
 
+    // 添加
+    void addFruit(Fruit fruit);
+
 }
