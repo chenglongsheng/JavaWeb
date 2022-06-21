@@ -24,6 +24,16 @@ public class FruitDAOImpl extends BaseDAO<Fruit> implements FruitDAO {
     }
 
     @Override
+    public List<Fruit> getFruitList(String keyword) {
+        return super.executeQuery("select * from t_fruit where fname like ? or remark like ?", "%" + keyword + "%", "%" + keyword + "%");
+    }
+
+    @Override
+    public List<Fruit> getFruitList(String keyword, Integer pageNo) {
+        return super.executeQuery("select * from t_fruit where fname like ? or remark like ? limit ?, 5", "%" + keyword + "%", "%" + keyword + "%", (pageNo - 1) * 5);
+    }
+
+    @Override
     public Fruit getFruitInfo(Integer fid) {
         return super.load("select * from t_fruit where fid=?", fid);
     }

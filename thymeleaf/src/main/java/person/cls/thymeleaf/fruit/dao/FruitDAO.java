@@ -18,6 +18,12 @@ public interface FruitDAO {
     // 分页查询
     List<Fruit> getFruitList(Integer pageNo);
 
+    // 模糊查询
+    List<Fruit> getFruitList(String keyword);
+
+    // 模糊分页查询
+    List<Fruit> getFruitList(String keyword, Integer pageNo);
+
     // 根据id获取数据
     Fruit getFruitInfo(Integer fid);
 
