@@ -9,8 +9,14 @@
 <div id="div_container">
     <div id="div_fruit_list">
         <p class="center f30">欢迎使用水果库存后台管理系统</p>
-        <div style="width:60%;margin-left:20%;text-align:right;">
-            <a th:href="@{/add.html}" style="margin-bottom:4px;">添加新库存记录</a>
+        <div style="width:60%;margin-left:20%; margin-bottom:5px;text-align:right;">
+            <form th:action="@{/index}" method="post" style="float: left">
+                <input type="hidden" name="operation" value="search">
+                请输入要查询的关键字：
+                <input type="text" name="keyword" th:value="${session.keyword}"/>
+                <input type="submit" value="查询" class="btn"/>
+            </form>
+            <a th:href="@{/add.html}" style="margin-bottom:4px;float: right">添加新库存记录</a>
         </div>
         <table id="tbl_fruit">
             <tr>
@@ -33,9 +39,9 @@
         <div style="width: 60%;margin-left: 20%;padding-top: 4px;padding-bottom: 10%" class="center">
             <input type="button" value="首页" class="btn" th:onclick="|changePage(1)|"
                    th:disabled="${session.pageNo == 1}">
-            <input type="button" value="上一页" class="btn" th:onclick="|changePage(${session.pageNo-1})|"
+            <input type="button" value="上一页" class="btn" th:onclick="|changePage(${session.pageNo - 1})|"
                    th:disabled="${session.pageNo == 1}">
-            <input type="button" value="下一页" class="btn" th:onclick="|changePage(${session.pageNo+1})|"
+            <input type="button" value="下一页" class="btn" th:onclick="|changePage(${session.pageNo + 1})|"
                    th:disabled="${session.pageNo == session.pageCount}">
             <input type="button" value="尾页" class="btn" th:onclick="|changePage(${session.pageCount})|"
                    th:disabled="${session.pageNo == session.pageCount}">
