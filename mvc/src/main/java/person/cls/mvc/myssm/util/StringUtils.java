@@ -16,4 +16,13 @@ public class StringUtils {
         return (string != null && !"".equals(string));
     }
 
+    public static String substringFromPath(String path) {
+        if (path.startsWith("/")) {
+            String substring = path.substring(1);
+            int lastIndexOfDot = substring.lastIndexOf(".do");
+            return substring.substring(0, lastIndexOfDot);
+        }
+        return "error";
+    }
+
 }
