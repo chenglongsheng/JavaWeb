@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -33,25 +35,22 @@ public class FruitServlet extends ViewBaseServlet {
             operate = "index";
         }
 
-        switch (operate) {
-            case "index":
-                index(request, response);
-                break;
-            case "add":
-                add(request, response);
-                break;
-            case "del":
-                del(request, response);
-                break;
-            case "edit":
-                edit(request, response);
-                break;
-            case "update":
-                update(request, response);
-                break;
-            default:
-                throw new RuntimeException("没有该标识");
+        // 通过反射技术动态获取声明的方法
+        Method[] methods = this.getClass().getDeclaredMethods();
+        for (Method method : methods) {
+            String name = method.getName();
+            if (operate.equals(name)) {
+                try {
+                    // 找到与请求同名的方法调用自己
+                    method.setAccessible(true);
+                    method.invoke(this, request, response);
+                    return;
+                } catch (IllegalAccessException | InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+        throw new RuntimeException("没有该标识");
 
     }
 
@@ -121,7 +120,6 @@ public class FruitServlet extends ViewBaseServlet {
         String remark = request.getParameter("remark");
 
         Fruit fruit = new Fruit(0, fname, price, fcount, remark);
-        System.out.println(fruit);
         fruitDAO.addFruit(fruit);
 
         response.sendRedirect("fruit.do");
