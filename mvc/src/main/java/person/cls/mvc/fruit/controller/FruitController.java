@@ -1,4 +1,4 @@
-package person.cls.mvc.fruit.servlet;
+package person.cls.mvc.fruit.controller;
 
 import person.cls.mvc.fruit.dao.impl.FruitDAOImpl;
 import person.cls.mvc.fruit.pojo.Fruit;
@@ -6,7 +6,6 @@ import person.cls.mvc.myssm.myspringmvc.ViewBaseServlet;
 import person.cls.mvc.myssm.util.StringUtils;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,8 +20,7 @@ import java.util.List;
  * @date: 2022-06-25-9:41
  * @version: 1.0
  */
-@WebServlet("/fruit.do")
-public class FruitServlet extends ViewBaseServlet {
+public class FruitController extends ViewBaseServlet {
 
     private final FruitDAOImpl fruitDAO = new FruitDAOImpl();
 
