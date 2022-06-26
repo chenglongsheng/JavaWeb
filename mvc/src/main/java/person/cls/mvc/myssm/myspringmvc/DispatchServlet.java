@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -85,21 +86,57 @@ public class DispatchServlet extends ViewBaseServlet {
         }
 
         try {
-            // 获取要调用的方法
-            Method method = beanControllerObj.getClass().getDeclaredMethod(operate, HttpServletRequest.class);
-            method.setAccessible(true);
-            Object methodReturnObj = method.invoke(beanControllerObj, request);
+            Method[] methods = beanControllerObj.getClass().getDeclaredMethods();
+            for (Method method : methods) {
+                if (operate.equals(method.getName())) {
+                    Parameter[] parameters = method.getParameters();
 
-            // 视图处理
-            String methodReturnObjStr = (String) methodReturnObj;
-            if (methodReturnObjStr.startsWith("redirect:")) {
-                String redirectStr = methodReturnObjStr.substring("redirect:".length());
-                response.sendRedirect(redirectStr);
-            } else {
-                super.processTemplate(methodReturnObjStr, request, response);
+                    // 取得参数列表
+                    Object[] parameterValues = new Object[parameters.length];
+                    for (int i = 0; i < parameterValues.length; i++) {
+                        Parameter parameter = parameters[i];
+                        String parameterName = parameter.getName();
+                        // 如果参数名是request，response，session 就不在请求中获取参数
+                        switch (parameterName) {
+                            case "request":
+                                parameterValues[i] = request;
+                                break;
+                            case "response":
+                                parameterValues[i] = response;
+                                break;
+                            case "session":
+                                parameterValues[i] = request.getSession();
+                                break;
+                            default:
+                                String requestParameter = request.getParameter(parameterName);
+                                // 处理参数类型不一致异常
+                                String typeName = parameter.getType().getName();
+                                Object parameterObj = requestParameter;
+                                if (parameterObj != null) {
+                                    if (typeName.equals("java.lang.Integer")) {
+                                        parameterObj = Integer.parseInt(requestParameter);
+                                    }
+                                    parameterValues[i] = parameterObj;
+                                }
+                                break;
+                        }
+                    }
+
+                    method.setAccessible(true);
+                    Object methodReturnObj = method.invoke(beanControllerObj, parameterValues);
+
+                    // 视图处理
+                    String methodReturnObjStr = (String) methodReturnObj;
+                    if (methodReturnObjStr.startsWith("redirect:")) {
+                        String redirectStr = methodReturnObjStr.substring("redirect:".length());
+                        response.sendRedirect(redirectStr);
+                    } else {
+                        super.processTemplate(methodReturnObjStr, request, response);
+                    }
+                }
             }
 
-        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+        } catch (InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
         }
 
