@@ -1,7 +1,7 @@
 package person.cls.mvc.fruit.controller;
 
-import person.cls.mvc.fruit.dao.impl.FruitDAOImpl;
 import person.cls.mvc.fruit.pojo.Fruit;
+import person.cls.mvc.fruit.service.impl.FruitServiceImpl;
 import person.cls.mvc.myssm.util.StringUtils;
 
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class FruitController {
 
-    private final FruitDAOImpl fruitDAO = new FruitDAOImpl();
+    private final FruitServiceImpl fruitService = new FruitServiceImpl();
 
     protected String index(Integer pageNo, String keyword, String operation, HttpServletRequest request) throws ServletException {
 
@@ -38,21 +38,21 @@ public class FruitController {
             // 用户空输入判断
             if (StringUtils.isEmpty(keyword)) {
                 keyword = "";
-                size = fruitDAO.getFruitList().size();
-                fruitList = fruitDAO.getFruitList(pageNo);
+                size = fruitService.getFruitList().size();
+                fruitList = fruitService.getFruitList(pageNo);
             } else {
-                size = fruitDAO.getFruitList(keyword).size();
-                fruitList = fruitDAO.getFruitList(keyword, pageNo);
+                size = fruitService.getFruitList(keyword).size();
+                fruitList = fruitService.getFruitList(keyword, pageNo);
             }
             // get请求.地址栏直接输入网址，上一页下一页
         } else {
             keyword = (String) session.getAttribute("keyword");
             if (StringUtils.isEmpty(keyword)) {
-                size = fruitDAO.getFruitList().size();
-                fruitList = fruitDAO.getFruitList(pageNo);
+                size = fruitService.getFruitList().size();
+                fruitList = fruitService.getFruitList(pageNo);
             } else {
-                size = fruitDAO.getFruitList(keyword).size();
-                fruitList = fruitDAO.getFruitList(keyword, pageNo);
+                size = fruitService.getFruitList(keyword).size();
+                fruitList = fruitService.getFruitList(keyword, pageNo);
             }
         }
 
@@ -69,18 +69,18 @@ public class FruitController {
 
     protected String add(String fname, Integer price, Integer fcount, String remark) {
         Fruit fruit = new Fruit(0, fname, price, fcount, remark);
-        fruitDAO.addFruit(fruit);
+        fruitService.addFruit(fruit);
         return "redirect:fruit.do";
     }
 
     protected String del(Integer fid) throws ServletException {
-        fruitDAO.delFruitById(fid);
+        fruitService.delFruitById(fid);
         return "redirect:fruit.do";
     }
 
     protected String edit(HttpServletRequest request, Integer fid) {
         if (fid != null) {
-            Fruit fruitInfo = fruitDAO.getFruitInfo(fid);
+            Fruit fruitInfo = fruitService.getFruitInfo(fid);
             request.setAttribute("fruit", fruitInfo);
             return "edit";
         }
@@ -89,7 +89,7 @@ public class FruitController {
 
     protected String update(Integer fid, String fname, Integer price, Integer fcount, String remark) {
         Fruit fruit = new Fruit(fid, fname, price, fcount, remark);
-        fruitDAO.updateFruitById(fruit);
+        fruitService.updateFruitById(fruit);
         return "redirect:fruit.do";
     }
 
