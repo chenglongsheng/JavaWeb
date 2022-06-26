@@ -2,16 +2,11 @@ package person.cls.mvc.fruit.controller;
 
 import person.cls.mvc.fruit.dao.impl.FruitDAOImpl;
 import person.cls.mvc.fruit.pojo.Fruit;
-import person.cls.mvc.myssm.myspringmvc.ViewBaseServlet;
 import person.cls.mvc.myssm.util.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -20,39 +15,11 @@ import java.util.List;
  * @date: 2022-06-25-9:41
  * @version: 1.0
  */
-public class FruitController extends ViewBaseServlet {
+public class FruitController {
 
     private final FruitDAOImpl fruitDAO = new FruitDAOImpl();
 
-    @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-
-        String operate = request.getParameter("operate");
-        if (StringUtils.isEmpty(operate)) {
-            operate = "index";
-        }
-
-        // 通过反射技术动态获取声明的方法
-        Method[] methods = this.getClass().getDeclaredMethods();
-        for (Method method : methods) {
-            String name = method.getName();
-            if (operate.equals(name)) {
-                try {
-                    // 找到与请求同名的方法调用自己
-                    method.setAccessible(true);
-                    method.invoke(this, request, response);
-                    return;
-                } catch (IllegalAccessException | InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        throw new RuntimeException("没有该标识");
-
-    }
-
-    protected void index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected String index(HttpServletRequest request) throws ServletException{
 
         HttpSession session = request.getSession();
 
@@ -106,11 +73,13 @@ public class FruitController extends ViewBaseServlet {
         session.setAttribute("pageNo", pageNo);
         session.setAttribute("pageCount", pageCount);
 
-        processTemplate("index", request, response);
+//        processTemplate("index", request, response);
+
+        return "index";
 
     }
 
-    protected void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected String add(HttpServletRequest request) throws ServletException {
 
         String fname = request.getParameter("fname");
         Integer price = Integer.parseInt(request.getParameter("price"));
@@ -120,29 +89,32 @@ public class FruitController extends ViewBaseServlet {
         Fruit fruit = new Fruit(0, fname, price, fcount, remark);
         fruitDAO.addFruit(fruit);
 
-        response.sendRedirect("fruit.do");
+//        response.sendRedirect("fruit.do");
+        return "redirect:fruit.do";
 
     }
 
-    protected void del(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected String del(HttpServletRequest request) throws ServletException {
         int fid = Integer.parseInt(request.getParameter("fid"));
         fruitDAO.delFruitById(fid);
-        response.sendRedirect("fruit.do");
+//        response.sendRedirect("fruit.do");
+        return "redirect:fruit.do";
     }
 
-    protected void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected String edit(HttpServletRequest request) throws ServletException {
 
         String fid = request.getParameter("fid");
         if (!StringUtils.isEmpty(fid)) {
             int id = Integer.parseInt(fid);
             Fruit fruitInfo = fruitDAO.getFruitInfo(id);
             request.setAttribute("fruit", fruitInfo);
-            processTemplate("edit", request, response);
+//            processTemplate("edit", request, response);
+            return "edit";
         }
-
+        return "error";
     }
 
-    protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected String update(HttpServletRequest request) throws ServletException {
 
         String fidStr = request.getParameter("fid");
         Integer fid = Integer.parseInt(fidStr);
@@ -157,7 +129,8 @@ public class FruitController extends ViewBaseServlet {
         fruitDAO.updateFruitById(fruit);
 
         // 浏览器重定向
-        response.sendRedirect("fruit.do");
+//        response.sendRedirect("fruit.do");
+        return "redirect:fruit.do";
 
     }
 

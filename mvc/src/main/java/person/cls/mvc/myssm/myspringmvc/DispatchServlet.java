@@ -16,6 +16,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,10 +32,15 @@ public class DispatchServlet extends ViewBaseServlet {
 
     private Map<String, Object> beanMap = new HashMap<>();
 
+    public DispatchServlet() {
+    }
+
     /**
      * 解析XML文件，通过反射生成对应的controller实例，然后存放到beanMap容器中
      */
-    public DispatchServlet() {
+    @Override
+    public void init() throws ServletException {
+        super.init();
         try {
             InputStream is = getClass().getClassLoader().getResourceAsStream("applicationContext.xml");
             // 1.创建DocumentBuilderFactory对象
@@ -68,6 +75,33 @@ public class DispatchServlet extends ViewBaseServlet {
         // 根据path调度给具体的servlet
         // 把 /*.do -> *
         String name = StringUtils.substringFromPath(servletPath);
+
+        Object beanControllerObj = beanMap.get(name);
+
+
+        String operate = request.getParameter("operate");
+        if (StringUtils.isEmpty(operate)) {
+            operate = "index";
+        }
+
+        try {
+            // 获取要调用的方法
+            Method method = beanControllerObj.getClass().getDeclaredMethod(operate, HttpServletRequest.class);
+            method.setAccessible(true);
+            Object methodReturnObj = method.invoke(beanControllerObj, request);
+
+            // 视图处理
+            String methodReturnObjStr = (String) methodReturnObj;
+            if (methodReturnObjStr.startsWith("redirect:")) {
+                String redirectStr = methodReturnObjStr.substring("redirect:".length());
+                response.sendRedirect(redirectStr);
+            } else {
+                super.processTemplate(methodReturnObjStr, request, response);
+            }
+
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
     }
 }
