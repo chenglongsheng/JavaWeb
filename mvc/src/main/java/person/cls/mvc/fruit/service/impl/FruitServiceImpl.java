@@ -1,6 +1,6 @@
 package person.cls.mvc.fruit.service.impl;
 
-import person.cls.mvc.fruit.dao.impl.FruitDAOImpl;
+import person.cls.mvc.fruit.dao.FruitDAO;
 import person.cls.mvc.fruit.pojo.Fruit;
 import person.cls.mvc.fruit.service.FruitService;
 
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class FruitServiceImpl implements FruitService {
 
-    private final FruitDAOImpl fruitDAO = new FruitDAOImpl();
+    private FruitDAO fruitDAO = null;
 
     @Override
     public List<Fruit> getFruitList() {

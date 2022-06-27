@@ -1,7 +1,7 @@
 package person.cls.mvc.fruit.controller;
 
 import person.cls.mvc.fruit.pojo.Fruit;
-import person.cls.mvc.fruit.service.impl.FruitServiceImpl;
+import person.cls.mvc.fruit.service.FruitService;
 import person.cls.mvc.myssm.util.StringUtils;
 
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class FruitController {
 
-    private final FruitServiceImpl fruitService = new FruitServiceImpl();
+    private FruitService fruitService = null;
 
     protected String index(Integer pageNo, String keyword, String operation, HttpServletRequest request) throws ServletException {
 
