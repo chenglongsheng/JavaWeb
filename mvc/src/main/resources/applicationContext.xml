@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <beans>
     <bean id="fruitDAO" class="person.cls.mvc.fruit.dao.impl.FruitDAOImpl"/>
-    <bean id="fruitService" class="person.cls.mvc.fruit.service.impl.FruitServiceImpl"/>
+    <bean id="fruitService" class="person.cls.mvc.fruit.service.impl.FruitServiceImpl">
+        <property id="fruitDAO" ref="fruitDAO"/>
+    </bean>
     <!--  这个标签的作用是：将servletPath对应的controller  -->
-    <bean id="fruit" class="person.cls.mvc.fruit.controller.FruitController"/>
+    <bean id="fruit" class="person.cls.mvc.fruit.controller.FruitController">
+        <!-- 依赖绑定fruit依赖于fruitService -->
+        <property id="fruitService" ref="fruitService"/>
+    </bean>
 </beans>
