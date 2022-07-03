@@ -1,4 +1,4 @@
-package person.cls.mvc.myssm.io;
+package person.cls.mvc.myssm.ioc;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

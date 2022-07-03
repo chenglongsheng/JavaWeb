@@ -1,4 +1,4 @@
-package person.cls.mvc.myssm.io;
+package person.cls.mvc.myssm.ioc;
 
 /**
  * @description: Bean工厂
