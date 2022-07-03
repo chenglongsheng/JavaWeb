@@ -1,9 +1,9 @@
 package person.cls.mvc.myssm.myspringmvc;
 
 import person.cls.mvc.myssm.ioc.BeanFactory;
-import person.cls.mvc.myssm.ioc.ClassPathXmlApplicationContext;
 import person.cls.mvc.myssm.util.StringUtils;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +33,14 @@ public class DispatchServlet extends ViewBaseServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        beanFactory = new ClassPathXmlApplicationContext();
+//        beanFactory = new ClassPathXmlApplicationContext();
+        ServletContext application = getServletContext();
+        Object beanFactoryObj = application.getAttribute("beanFactory");
+        if (beanFactoryObj != null) {
+            beanFactory = (BeanFactory) beanFactoryObj;
+        } else {
+            throw new RuntimeException("beanFactory未找到！");
+        }
     }
 
     @Override
