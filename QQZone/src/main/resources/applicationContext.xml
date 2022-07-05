@@ -19,14 +19,14 @@
     <bean id="userBasicService" class="person.cls.qqzone.service.impl.UserBasicServiceImpl">
         <property id="userBasicDAO" ref="userBasicDAO"/>
     </bean>
-    <bean id="TopicService" class="person.cls.qqzone.service.impl.TopicServiceImpl">
+    <bean id="topicService" class="person.cls.qqzone.service.impl.TopicServiceImpl">
         <property id="topicDAO" ref="topicDAO"/>
     </bean>
 
     <!--  controller  -->
     <bean id="user" class="person.cls.qqzone.controller.UserController">
         <property id="userBasicService" ref="userBasicService"/>
-        <property id="TopicService" ref="TopicService"/>
+        <property id="topicService" ref="topicService"/>
     </bean>
 
 </beans>
