@@ -47,8 +47,6 @@ public class DispatchServlet extends ViewBaseServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 设置编码
-        request.setCharacterEncoding("UTF-8");
         String servletPath = request.getServletPath();
         // 根据path调度给具体的servlet
         // 把 /*.do -> *
