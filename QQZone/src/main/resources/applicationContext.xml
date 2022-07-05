@@ -6,5 +6,10 @@
     <bean id="topicDAO" class="person.cls.qqzone.dao.impl.TopicDAOImpl"/>
 
     <!--  Service  -->
-    <bean id="userBasicService" class="person.cls.qqzone.service.impl.UserBasicServiceImpl"/>
+    <bean id="userBasicService" class="person.cls.qqzone.service.impl.UserBasicServiceImpl">
+        <property id="userBasicDAO" ref="userBasicDAO"/>
+    </bean>
+    <bean id="TopicService" class="person.cls.qqzone.service.impl.TopicServiceImpl">
+        <property id="topicDAO" ref="topicDAO"/>
+    </bean>
 </beans>
