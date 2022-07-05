@@ -155,7 +155,7 @@ public abstract class BaseDAO<T> {
                 T entity = (T) entityClass.newInstance();
 
                 for (int i = 0; i < columnCount; i++) {
-                    String columnName = rsmd.getColumnName(i + 1);            //fid   fname   price
+                    String columnName = rsmd.getColumnLabel(i + 1);            //fid   fname   price
                     Object columnValue = rs.getObject(i + 1);     //33    苹果      5
                     setValue(entity, columnName, columnValue);
                 }
@@ -191,7 +191,7 @@ public abstract class BaseDAO<T> {
                 T entity = (T) entityClass.newInstance();
 
                 for (int i = 0; i < columnCount; i++) {
-                    String columnName = rsmd.getColumnName(i + 1);            //fid   fname   price
+                    String columnName = rsmd.getColumnLabel(i + 1);            //fid   fname   price
                     Object columnValue = rs.getObject(i + 1);     //33    苹果      5
                     setValue(entity, columnName, columnValue);
                 }
