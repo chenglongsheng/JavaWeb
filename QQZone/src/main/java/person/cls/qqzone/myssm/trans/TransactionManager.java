@@ -2,6 +2,7 @@ package person.cls.qqzone.myssm.trans;
 
 import person.cls.qqzone.myssm.basedao.ConnectionUtil;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
@@ -15,22 +16,25 @@ public class TransactionManager {
     /**
      * 开启事务
      */
-    public void beginTransaction() throws SQLException {
+    public static void beginTransaction() throws SQLException {
         ConnectionUtil.getConnection().setAutoCommit(false);
     }
 
     /**
      * 提交事务
      */
-    public void commitTransaction() throws SQLException {
-        ConnectionUtil.getConnection().commit();
+    public static void commitTransaction() throws SQLException {
+        Connection connection = ConnectionUtil.getConnection();
+        connection.commit();
+        ConnectionUtil.closeConnection();
     }
 
     /**
      * 回滚事务
      */
-    public void rollbackTransaction() throws SQLException {
+    public static void rollbackTransaction() throws SQLException {
         ConnectionUtil.getConnection().rollback();
+        ConnectionUtil.closeConnection();
     }
 
 }

@@ -40,4 +40,15 @@ public class ConnectionUtil {
         return threadLocal.get();
     }
 
+    public static void closeConnection() throws SQLException {
+        Connection conn = threadLocal.get();
+        if (conn == null) {
+            return;
+        }
+        if (!conn.isClosed()) {
+            conn.close();
+            threadLocal.set(null);
+        }
+    }
+
 }
