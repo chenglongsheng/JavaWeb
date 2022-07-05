@@ -2,9 +2,7 @@ package person.cls.qqzone.myssm.basedao;
 
 import person.cls.qqzone.myssm.exception.DAOException;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
+import java.lang.reflect.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,12 +87,21 @@ public abstract class BaseDAO<T> {
     }
 
     //通过反射技术给obj对象的property属性赋propertyValue值
-    private void setValue(Object obj, String property, Object propertyValue) {
+    private void setValue(Object obj, String property, Object propertyValue) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException {
         Class clazz = obj.getClass();
         try {
             //获取property这个字符串对应的属性名 ， 比如 "fid"  去找 obj对象中的 fid 属性
             Field field = clazz.getDeclaredField(property);
             if (field != null) {
+
+                // 获取当前字段的类型名字
+                String typeName = field.getType().getName();
+                if (isMyType(typeName)) {
+                    Class<?> typeNameClass = Class.forName(typeName);
+                    Constructor<?> constructor = typeNameClass.getDeclaredConstructor(Integer.class);
+                    propertyValue = constructor.newInstance(propertyValue);
+                }
+
                 field.setAccessible(true);
                 field.set(obj, propertyValue);
             }
@@ -102,6 +109,17 @@ public abstract class BaseDAO<T> {
             e.printStackTrace();
             throw new DAOException("BaseDAO setValue异常");
         }
+    }
+
+    private static boolean isNotMyType(String typeName) {
+        return "java.lang.Integer".equals(typeName)
+                || "java.lang.String".equals(typeName)
+                || "java.util.Date".equals(typeName)
+                || "java.sql.Date".equals(typeName);
+    }
+
+    private static boolean isMyType(String typeName) {
+        return !isNotMyType(typeName);
     }
 
     //执行复杂查询，返回例如统计结果
@@ -161,7 +179,7 @@ public abstract class BaseDAO<T> {
                 }
                 return entity;
             }
-        } catch (SQLException | InstantiationException | IllegalAccessException e) {
+        } catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException | InvocationTargetException | NoSuchMethodException e) {
             e.printStackTrace();
             throw new DAOException("BaseDAO load异常");
         } finally {
@@ -197,7 +215,7 @@ public abstract class BaseDAO<T> {
                 }
                 list.add(entity);
             }
-        } catch (SQLException | IllegalAccessException | InstantiationException e) {
+        } catch (SQLException | IllegalAccessException | InstantiationException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException e) {
             e.printStackTrace();
             throw new DAOException("BaseDAO executeQuery异常");
         } finally {
