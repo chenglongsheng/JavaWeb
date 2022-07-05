@@ -12,4 +12,11 @@
     <bean id="TopicService" class="person.cls.qqzone.service.impl.TopicServiceImpl">
         <property id="topicDAO" ref="topicDAO"/>
     </bean>
+
+    <!--  controller  -->
+    <bean id="user" class="person.cls.qqzone.controller.UserController">
+        <property id="userBasicService" ref="userBasicService"/>
+        <property id="TopicService" ref="TopicService"/>
+    </bean>
+
 </beans>
