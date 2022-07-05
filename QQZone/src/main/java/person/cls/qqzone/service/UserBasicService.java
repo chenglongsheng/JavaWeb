@@ -29,4 +29,6 @@ public interface UserBasicService {
      */
     List<UserBasic> getFriendList(UserBasic userBasic);
 
+    UserBasic getUserBasicById(Integer id);
+
 }

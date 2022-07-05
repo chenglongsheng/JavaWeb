@@ -29,4 +29,9 @@ public class UserBasicServiceImpl implements UserBasicService {
         friendIdList.forEach(item -> friendList.add(userBasicDAO.getUserBasicById(item.getId())));
         return friendList;
     }
+
+    @Override
+    public UserBasic getUserBasicById(Integer id) {
+        return userBasicDAO.getUserBasicById(id);
+    }
 }
