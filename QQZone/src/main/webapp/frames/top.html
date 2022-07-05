@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/top.css">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/top.css}">
 </head>
 <body>
-    <div id="top_title" >欢迎来到QQZone！</div>
-    <div id="top_link_div" >
-        <span>欢迎进入Jim的空间！</span>
-        <span>返回自己的空间!</span>
-    </div>
+<div id="top_title">欢迎来到QQZone！</div>
+<div id="top_link_div">
+    <span th:text="|欢迎进入${session.friendBasic.nickName}的空间！|">欢迎进入Jim的空间！</span>
+    <span th:if="${session.userBasic.id} != ${session.friendBasic.id}">
+        <a th:href="@{|user.do?operate=friend&id=${session.userBasic.id}|}" target="_top">返回自己的空间!</a>
+    </span>
+</div>
 </body>
 </html>

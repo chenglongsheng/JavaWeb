@@ -27,6 +27,7 @@ public class UserController {
             userBasic.setFriendList(friendList);
             userBasic.setTopicList(topicList);
             session.setAttribute("userBasic", userBasic);
+            session.setAttribute("friendBasic", userBasic);
             return "index";
         } else {
             return "login";
