@@ -33,4 +33,11 @@ public class UserController {
         }
     }
 
+    public String friend(Integer id, HttpSession session) {
+        UserBasic friend = userBasicService.getUserBasicById(id);
+        friend.setTopicList(topicService.getTopicList(friend));
+        session.setAttribute("friendBasic", friend);
+        return "index";
+    }
+
 }
