@@ -28,5 +28,6 @@
         <property id="userBasicService" ref="userBasicService"/>
         <property id="topicService" ref="topicService"/>
     </bean>
+    <bean id="page" class="person.cls.qqzone.myssm.controller.PageController"/>
 
 </beans>
