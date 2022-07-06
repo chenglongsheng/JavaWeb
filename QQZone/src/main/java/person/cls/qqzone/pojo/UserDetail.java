@@ -24,6 +24,10 @@ public class UserDetail {
     public UserDetail() {
     }
 
+    public UserDetail(Integer id) {
+        this.id = id;
+    }
+
     public Integer getId() {
         return id;
     }
