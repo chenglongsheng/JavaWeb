@@ -21,4 +21,6 @@ public interface TopicService {
      */
     List<Topic> getTopicList(UserBasic userBasic);
 
+    Topic geTopicById(Integer id);
+
 }

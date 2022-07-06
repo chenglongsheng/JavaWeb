@@ -16,7 +16,7 @@ import java.util.List;
 public class ReplyDAOImpl extends BaseDAO<Reply> implements ReplyDAO {
     @Override
     public List<Reply> getReplyList(Topic topic) {
-        return super.executeQuery("");
+        return super.executeQuery("select * from t_reply where topic=?", topic.getId());
     }
 
     @Override

@@ -30,7 +30,7 @@ public class TopicDAOImpl extends BaseDAO<Topic> implements TopicDAO {
     }
 
     @Override
-    public void getTopic(Topic topic) {
-
+    public Topic getTopic(Topic topic) {
+        return super.load("select * from t_topic where id=?", topic.getId());
     }
 }

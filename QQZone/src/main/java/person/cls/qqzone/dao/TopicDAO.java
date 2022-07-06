@@ -31,6 +31,6 @@ public interface TopicDAO {
     /**
      * 获取特定日志信息
      */
-    void getTopic(Topic topic);
+    Topic getTopic(Topic topic);
 
 }
