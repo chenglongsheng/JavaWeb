@@ -24,6 +24,7 @@
     <bean id="topicService" class="person.cls.qqzone.service.impl.TopicServiceImpl">
         <property id="topicDAO" ref="topicDAO"/>
         <property id="replyService" ref="replyService"/>
+        <property id="userBasicService" ref="userBasicService"/>
     </bean>
     <bean id="replyService" class="person.cls.qqzone.service.impl.ReplyServiceImpl">
         <property id="replyDAO" ref="replyDAO"/>

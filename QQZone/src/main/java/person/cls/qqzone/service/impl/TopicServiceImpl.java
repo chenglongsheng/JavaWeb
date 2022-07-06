@@ -6,6 +6,7 @@ import person.cls.qqzone.pojo.Topic;
 import person.cls.qqzone.pojo.UserBasic;
 import person.cls.qqzone.service.ReplyService;
 import person.cls.qqzone.service.TopicService;
+import person.cls.qqzone.service.UserBasicService;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class TopicServiceImpl implements TopicService {
 
     private TopicDAO topicDAO;
     private ReplyService replyService;
+    private UserBasicService userBasicService;
 
     @Override
     public List<Topic> getTopicList(UserBasic userBasic) {
@@ -28,8 +30,10 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public Topic geTopicById(Integer id) {
         Topic topic = topicDAO.getTopic(new Topic(id));
+        UserBasic author = userBasicService.getUserBasicById(topic.getAuthor().getId());
         List<Reply> replyList = replyService.getReplyList(id);
         topic.setReplyList(replyList);
+        topic.setAuthor(author);
         return topic;
     }
 }
