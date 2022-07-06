@@ -25,12 +25,12 @@
                 <tr>
                     <td rowspan="2" class="w14 h96">
                         <div class="h64 center " style="width:100%;">
-                            <img class="img56 " src="../imgs/qf.png"/>
+                            <img class="img56 " th:src="@{|/imgs/${session.topic.author.headImg}|}"/>
                         </div>
                         <div class="h32 center" style="width:100%;">乔峰</div>
                     </td>
                     <td class="topic_title" onmousemove="showDelImg('img01')" onmouseout="hiddenDelImg('img01')">
-                        <img id="img01" style="float: right;margin-top:2px;margin-right:2px;display: none;" src="../imgs/del.jpg" style="width:24px;height: 24px;"/>
+                        <img id="img01" style="width:24px;height: 24px;float: right;margin-top:2px;margin-right:2px;display: none;" src="../imgs/del.jpg"/>
                         <span>《萧某今天就和天下群雄决一死战，你们一起上吧！》</span>
                         <span class="title_date_right">2021-09-01 12:30:55</span>
                     </td>
@@ -51,7 +51,7 @@
                     </td>
                     <td class="reply_title" onmouseover="showDelImg('img02')" onmouseout="hiddenDelImg('img02')">
                         <span>回复：萧某今天就和天下群雄决一死战，你们一起上吧！</span>
-                        <img id="img02" style="float: right;margin-top:2px;margin-right:2px;display: none;" src="../imgs/del.jpg" style="width:24px;height: 24px;"/>
+                        <img id="img02" style="width:24px;height: 24px;float: right;margin-top:2px;margin-right:2px;display: none;" src="../imgs/del.jpg"/>
                         <span class="title_date_right">2021-09-01 14:35:15</span>
                     </td>
                 </tr>
