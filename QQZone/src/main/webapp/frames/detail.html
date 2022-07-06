@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/detail.css">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/detail.css}">
     <script language="JavaScript">
-        function showDelImg(imgId){
-            document.getElementById(imgId).style.display='inline';
+        function showDelImg(imgId) {
+            document.getElementById(imgId).style.display = 'inline';
         }
-        function hiddenDelImg(imgId){
-            document.getElementById(imgId).style.display='none';
+
+        function hiddenDelImg(imgId) {
+            document.getElementById(imgId).style.display = 'none';
         }
     </script>
 </head>
@@ -77,71 +78,73 @@
                         <span class="title_date_right">2021-09-01 14:35:15</span>
                         <br/>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td onmouseover="showDelImg('a01')" onmouseout="hiddenDelImg('a01')">
-                        <span>兵凶战危, 世间岂有必胜之事？大宋兵多财足, 只须有一二名将, 率兵奋战, 大辽、吐蕃联手, 未必便能取胜。咱们打一个血流成河, 尸骨如山, 欲让你慕容氏来乘机兴复燕国, 我对大辽尽忠报国, 是在保土安民, 而不是为了一己的荣华富贵, 因而杀人取地、建功立业。</span><br/>
-                        <a id="a01" href="#" style="float: right;display: none;">主人回复</a>
-                    </td>
-                </tr>
-            </table>
-            <table class="tbl_reply_info">
-                <tr>
-                    <td rowspan="2" class="w14 h88">
-                        <div class="h56 center" style="width:100%;">
-                            <img class="img48" src="../imgs/zl.png"/>
-                        </div>
-                        <div class="h32 center" style="width:100%;">钟灵</div>
-                    </td>
-                    <td class="reply_title">
-                        <span>回复：萧某今天就和天下群雄决一死战，你们一起上吧！</span>
-                        <span class="title_date_right">2021-09-01 14:35:15</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>我乔峰一生的成就得来不易,我断不会仅凭你们几句片面之词就此改写我乔峰的一生</td>
-                </tr>
-            </table>
-            <table class="tbl_reply_info">
-                <tr>
-                    <td rowspan="2" class="w14 h88">
-                        <div class="h56 center" style="width:100%;">
-                            <img class="img48" src="../imgs/wyy.png"/>
-                        </div>
-                        <div class="h32 center" style="width:100%;">王语嫣</div>
-                    </td>
-                    <td class="reply_title">
-                        <span>回复：萧某今天就和天下群雄决一死战，你们一起上吧！</span>
-                        <span class="title_date_right">2021-09-01 14:35:15</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>你是萧大哥在这世上唯一最亲的人，我是汉人也好，契丹人也好，你从来都不会嫌弃我，萧大哥还妄想跟你做一对平凡的夫妇，可惜，可惜这一切的一切都被我亲手毁灭，如今你已经离我而去，萧大哥留在这个世上还有什么值得留念的呢？</td>
-                </tr>
-            </table>
-        </div>
+                </td>
+            </tr>
+            <tr>
+                <td onmouseover="showDelImg('a01')" onmouseout="hiddenDelImg('a01')">
+                    <span>兵凶战危, 世间岂有必胜之事？大宋兵多财足, 只须有一二名将, 率兵奋战, 大辽、吐蕃联手, 未必便能取胜。咱们打一个血流成河, 尸骨如山, 欲让你慕容氏来乘机兴复燕国, 我对大辽尽忠报国, 是在保土安民, 而不是为了一己的荣华富贵, 因而杀人取地、建功立业。</span><br/>
+                    <a id="a01" href="#" style="float: right;display: none;">主人回复</a>
+                </td>
+            </tr>
+        </table>
+        <table class="tbl_reply_info">
+            <tr>
+                <td rowspan="2" class="w14 h88">
+                    <div class="h56 center" style="width:100%;">
+                        <img class="img48" src="../imgs/zl.png"/>
+                    </div>
+                    <div class="h32 center" style="width:100%;">钟灵</div>
+                </td>
+                <td class="reply_title">
+                    <span>回复：萧某今天就和天下群雄决一死战，你们一起上吧！</span>
+                    <span class="title_date_right">2021-09-01 14:35:15</span>
+                </td>
+            </tr>
+            <tr>
+                <td>我乔峰一生的成就得来不易,我断不会仅凭你们几句片面之词就此改写我乔峰的一生</td>
+            </tr>
+        </table>
+        <table class="tbl_reply_info">
+            <tr>
+                <td rowspan="2" class="w14 h88">
+                    <div class="h56 center" style="width:100%;">
+                        <img class="img48" src="../imgs/wyy.png"/>
+                    </div>
+                    <div class="h32 center" style="width:100%;">王语嫣</div>
+                </td>
+                <td class="reply_title">
+                    <span>回复：萧某今天就和天下群雄决一死战，你们一起上吧！</span>
+                    <span class="title_date_right">2021-09-01 14:35:15</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    你是萧大哥在这世上唯一最亲的人，我是汉人也好，契丹人也好，你从来都不会嫌弃我，萧大哥还妄想跟你做一对平凡的夫妇，可惜，可惜这一切的一切都被我亲手毁灭，如今你已经离我而去，萧大哥留在这个世上还有什么值得留念的呢？
+                </td>
+            </tr>
+        </table>
     </div>
-    <div id="div_add_reply">
-        <p class="add_reply_title">添加回复</p>
-        <form action="" method="post">
-            <table>
-                <tr>
-                    <th style="width: 25%">回复日志：</th>
-                    <td><input type="text" value="《萧某今天就和天下群雄决一死战，你们一起上吧！》" readonly /></td>
-                </tr>
-                <tr>
-                    <th>回复内容：</th>
-                    <td><textarea rows="3"></textarea></td>
-                </tr>
-                <tr>
-                    <th colspan="2">
-                        <input type="submit" value=" 回 复 "/>
-                        <input type="reset" value=" 重 置 "/>
-                    </th>
-                </tr>
-            </table>
-        </form>
-    </div>
+</div>
+<div id="div_add_reply">
+    <p class="add_reply_title">添加回复</p>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th style="width: 25%">回复日志：</th>
+                <td><input type="text" value="《萧某今天就和天下群雄决一死战，你们一起上吧！》" readonly/></td>
+            </tr>
+            <tr>
+                <th>回复内容：</th>
+                <td><textarea rows="3"></textarea></td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <input type="submit" value=" 回 复 "/>
+                    <input type="reset" value=" 重 置 "/>
+                </th>
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>
