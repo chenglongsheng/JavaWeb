@@ -29,9 +29,11 @@
     <bean id="replyService" class="person.cls.qqzone.service.impl.ReplyServiceImpl">
         <property id="replyDAO" ref="replyDAO"/>
         <property id="hostReplyService" ref="hostReplyService"/>
+        <property id="userBasicService" ref="userBasicService"/>
     </bean>
     <bean id="hostReplyService" class="person.cls.qqzone.service.impl.HostReplyServiceImpl">
         <property id="hostReplyDAO" ref="hostReplyDAO"/>
+        <property id="userBasicService" ref="userBasicService"/>
     </bean>
 
     <!--  controller  -->
