@@ -3,7 +3,7 @@ package person.cls.qqzone.pojo;
 import java.util.Date;
 
 /**
- * @description: 热门回复
+ * @description: 主人回复
  * @author: CLS
  * @date: 2022-07-03-10:44
  * @version: 1.0
