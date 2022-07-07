@@ -37,4 +37,19 @@ public class ReplyServiceImpl implements ReplyService {
         }
         return replyList;
     }
+
+    @Override
+    public void delReplyById(Integer replyId) {
+        HostReply hostReply = hostReplyService.getHostReplyByReplyId(replyId);
+        if (hostReply != null) {
+            hostReplyService.delHostReplyById(hostReply.getId());
+        }
+        replyDAO.delReply(replyId);
+    }
+
+    @Override
+    public Reply getReplyById(Integer replyId) {
+        return replyDAO.getReplyById(replyId);
+    }
+
 }

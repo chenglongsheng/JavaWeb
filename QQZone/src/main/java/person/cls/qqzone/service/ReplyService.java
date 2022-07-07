@@ -14,4 +14,7 @@ public interface ReplyService {
 
     List<Reply> getReplyList(Integer topicId);
 
+    void delReplyById(Integer replyId);
+
+    Reply getReplyById(Integer replyId);
 }
