@@ -20,12 +20,17 @@ public class ReplyDAOImpl extends BaseDAO<Reply> implements ReplyDAO {
     }
 
     @Override
-    public void addReply(Reply reply) {
+    public Reply getReplyById(Integer id) {
+        return super.load("select * from t_reply where id=?", id);
+    }
 
+    @Override
+    public void addReply(Reply reply) {
+        executeUpdate("insert into t_reply values (0,?,?,?,?)", 0, reply.getContent(), reply.getReplyDate(), reply.getAuthor().getId(), reply.getTopic().getId());
     }
 
     @Override
     public void delReply(Integer id) {
-
+        executeUpdate("delete from t_reply where id = ?", id);
     }
 }
