@@ -12,4 +12,6 @@ public interface HostReplyService {
 
     HostReply getHostReplyByReplyId(Integer replyId);
 
+    void delHostReplyById(Integer id);
+
 }

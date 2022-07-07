@@ -27,4 +27,9 @@ public class HostReplyServiceImpl implements HostReplyService {
         return hostReply;
     }
 
+    @Override
+    public void delHostReplyById(Integer id) {
+        hostReplyDAO.delHostReplyById(id);
+    }
+
 }
