@@ -18,6 +18,8 @@ public interface ReplyDAO {
      */
     List<Reply> getReplyList(Topic topic);
 
+    Reply getReplyById(Integer id);
+
     /**
      * 添加回复
      */
