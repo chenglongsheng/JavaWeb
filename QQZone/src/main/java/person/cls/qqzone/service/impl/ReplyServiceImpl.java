@@ -52,4 +52,9 @@ public class ReplyServiceImpl implements ReplyService {
         return replyDAO.getReplyById(replyId);
     }
 
+    @Override
+    public void addReply(Reply reply) {
+        replyDAO.addReply(reply);
+    }
+
 }

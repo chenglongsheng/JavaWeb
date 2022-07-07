@@ -17,4 +17,7 @@ public interface ReplyService {
     void delReplyById(Integer replyId);
 
     Reply getReplyById(Integer replyId);
+
+    void addReply(Reply reply);
+
 }

@@ -47,6 +47,7 @@
     </bean>
     <bean id="reply" class="person.cls.qqzone.controller.ReplyController">
         <property id="replyService" ref="replyService"/>
+        <property id="topicService" ref="topicService"/>
     </bean>
 
 </beans>
