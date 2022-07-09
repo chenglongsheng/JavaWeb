@@ -63,7 +63,8 @@
                 <td class="reply_title" th:onmouseover="|showDelImg('img0${reply.id}')|"
                     th:onmouseout="|hiddenDelImg('img0${reply.id}')|">
                     <span th:text="|回复: ${session.topic.title}|">回复：萧某今天就和天下群雄决一死战，你们一起上吧！</span>
-                    <img th:id="|img0${reply.id}|"
+                    <img th:if="${session.userBasic.id == session.friendBasic.id || session.userBasic.id == reply.author.id}"
+                         th:id="|img0${reply.id}|"
                          style="width:24px;height: 24px;float: right;margin-top:2px;margin-right:2px;display: none;cursor: pointer;"
                          th:src="@{/imgs/del.jpg}" alt="del"
                          th:onclick="|delReply(${reply.id})|"
@@ -85,7 +86,9 @@
                             主人回复于2021/10/01 11:50:30
                         </li>
                     </ul>
-                    <a th:unless="${reply.hostReply != null}" th:id="|a${reply.id}|" href=""
+                    <a th:if="${session.userBasic.id == session.friendBasic.id || session.userBasic.id == reply.author.id}"
+                       th:unless="${reply.hostReply != null}"
+                       th:id="|a${reply.id}|" href=""
                        style="float: right;display: none;">主人回复</a>
                 </td>
             </tr>
