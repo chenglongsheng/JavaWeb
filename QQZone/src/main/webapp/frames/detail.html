@@ -42,7 +42,7 @@
                          style="width:24px;height: 24px;float: right;margin-top:2px;margin-right:2px;display: none;"
                          th:src="@{/imgs/del.jpg}"/>
                     <span th:text="${session.topic.title}">《萧某今天就和天下群雄决一死战，你们一起上吧！》</span>
-                    <span class="title_date_right" th:text="${session.topic.topicDate}">2021-09-01 12:30:55</span>
+                    <span class="title_date_right" th:text="${#dates.format(session.topic.topicDate,'yyyy-MM-dd HH:mm:ss')}">2021-09-01 12:30:55</span>
                 </td>
             </tr>
             <tr>
@@ -69,7 +69,7 @@
                          th:src="@{/imgs/del.jpg}" alt="del"
                          th:onclick="|delReply(${reply.id})|"
                     />
-                    <span class="title_date_right" th:text="${reply.replyDate}">2021-09-01 14:35:15</span>
+                    <span class="title_date_right" th:text="${#dates.format(reply.replyDate,'yyyy-MM-dd HH:mm:ss')}">2021-09-01 14:35:15</span>
                 </td>
             </tr>
             <tr>
