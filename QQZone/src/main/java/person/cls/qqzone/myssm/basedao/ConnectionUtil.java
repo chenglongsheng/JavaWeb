@@ -1,8 +1,11 @@
 package person.cls.qqzone.myssm.basedao;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * @description: 数据库连接工具
@@ -12,12 +15,26 @@ import java.sql.SQLException;
  */
 public class ConnectionUtil {
 
-    public static final String DRIVER = "com.mysql.jdbc.Driver";
-    public static final String URL = "jdbc:mysql://localhost:3306/qqzonedb?useUnicode=true&characterEncoding=utf-8&useSSL=false";
-    public static final String USER = "root";
-    public static final String PWD = "123456";
+    private static String DRIVER;
+    private static String URL;
+    private static String USER;
+    private static String PWD;
 
     private static ThreadLocal<Connection> threadLocal = new ThreadLocal<>();
+
+    static {
+        InputStream is = ConnectionUtil.class.getClassLoader().getResourceAsStream("jdbc.properties");
+        Properties properties = new Properties();
+        try {
+            properties.load(is);
+            DRIVER = properties.getProperty("jdbc.driver");
+            URL = properties.getProperty("jdbc.url");
+            USER = properties.getProperty("jdbc.user");
+            PWD = properties.getProperty("jdbc.pwd");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static Connection createConnection() {
         try {
