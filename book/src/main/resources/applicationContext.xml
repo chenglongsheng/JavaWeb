@@ -10,5 +10,15 @@
         <!ATTLIST property ref IDREF #IMPLIED>
         ]>
 <beans>
+    <!--  controller  -->
     <bean id="page" class="person.cls.myssm.controller.PageController"/>
+    <bean id="user" class="person.cls.book.controller.UserController">
+        <property id="userService" ref="userService"/>
+    </bean>
+    <!--  dao  -->
+    <bean id="userDAO" class="person.cls.book.dao.impl.UserDAOImpl"/>
+    <!--  service  -->
+    <bean id="userService" class="person.cls.book.service.impl.UserServiceImpl">
+        <property id="userDAO" ref="userDAO"/>
+    </bean>
 </beans>
