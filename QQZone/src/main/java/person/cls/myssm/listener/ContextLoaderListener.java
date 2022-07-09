@@ -1,7 +1,7 @@
-package person.cls.qqzone.myssm.listener;
+package person.cls.myssm.listener;
 
-import person.cls.qqzone.myssm.ioc.BeanFactory;
-import person.cls.qqzone.myssm.ioc.ClassPathXmlApplicationContext;
+import person.cls.myssm.ioc.BeanFactory;
+import person.cls.myssm.ioc.ClassPathXmlApplicationContext;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;

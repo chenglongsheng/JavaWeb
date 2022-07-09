@@ -1,9 +1,9 @@
-package person.cls.qqzone.myssm.myspringmvc;
+package person.cls.myssm.myspringmvc;
 
 
-import person.cls.qqzone.myssm.exception.DispatchServletException;
-import person.cls.qqzone.myssm.ioc.BeanFactory;
-import person.cls.qqzone.myssm.util.StringUtils;
+import person.cls.myssm.ioc.BeanFactory;
+import person.cls.myssm.util.StringUtils;
+import person.cls.myssm.exception.DispatchServletException;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

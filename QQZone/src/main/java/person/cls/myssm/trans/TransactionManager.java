@@ -1,6 +1,6 @@
-package person.cls.qqzone.myssm.trans;
+package person.cls.myssm.trans;
 
-import person.cls.qqzone.myssm.basedao.ConnectionUtil;
+import person.cls.myssm.basedao.ConnectionUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;

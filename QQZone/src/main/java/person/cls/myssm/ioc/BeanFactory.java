@@ -1,4 +1,4 @@
-package person.cls.qqzone.myssm.ioc;
+package person.cls.myssm.ioc;
 
 /**
  * @description: Bean工厂

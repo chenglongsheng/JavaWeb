@@ -1,4 +1,4 @@
-package person.cls.qqzone.myssm.filter;
+package person.cls.myssm.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

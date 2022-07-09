@@ -1,4 +1,4 @@
-package person.cls.qqzone.myssm.myspringmvc;
+package person.cls.myssm.myspringmvc;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;

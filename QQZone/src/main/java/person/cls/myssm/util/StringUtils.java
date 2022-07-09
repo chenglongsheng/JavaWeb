@@ -1,4 +1,4 @@
-package person.cls.qqzone.myssm.util;
+package person.cls.myssm.util;
 
 /**
  * @description: String工具类

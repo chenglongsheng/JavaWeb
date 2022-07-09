@@ -1,4 +1,4 @@
-package person.cls.qqzone.myssm.exception;
+package person.cls.myssm.exception;
 
 /**
  * @description: DispatchServlet 运行时异常

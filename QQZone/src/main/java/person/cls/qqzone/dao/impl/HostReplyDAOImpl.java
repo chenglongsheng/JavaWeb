@@ -1,7 +1,7 @@
 package person.cls.qqzone.dao.impl;
 
 import person.cls.qqzone.dao.HostReplyDAO;
-import person.cls.qqzone.myssm.basedao.BaseDAO;
+import person.cls.myssm.basedao.BaseDAO;
 import person.cls.qqzone.pojo.HostReply;
 
 /**

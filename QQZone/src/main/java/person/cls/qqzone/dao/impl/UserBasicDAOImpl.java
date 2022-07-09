@@ -1,7 +1,7 @@
 package person.cls.qqzone.dao.impl;
 
 import person.cls.qqzone.dao.UserBasicDAO;
-import person.cls.qqzone.myssm.basedao.BaseDAO;
+import person.cls.myssm.basedao.BaseDAO;
 import person.cls.qqzone.pojo.UserBasic;
 
 import java.util.List;

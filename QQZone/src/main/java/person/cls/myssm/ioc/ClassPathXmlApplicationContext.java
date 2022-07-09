@@ -1,4 +1,4 @@
-package person.cls.qqzone.myssm.ioc;
+package person.cls.myssm.ioc;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

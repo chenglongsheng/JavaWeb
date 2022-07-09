@@ -1,6 +1,6 @@
-package person.cls.qqzone.myssm.basedao;
+package person.cls.myssm.basedao;
 
-import person.cls.qqzone.myssm.exception.DAOException;
+import person.cls.myssm.exception.DAOException;
 
 import java.lang.reflect.*;
 import java.sql.*;

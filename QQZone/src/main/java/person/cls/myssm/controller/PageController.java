@@ -1,4 +1,4 @@
-package person.cls.qqzone.myssm.controller;
+package person.cls.myssm.controller;
 
 /**
  * @description: 页面跳转经过thymeleaf模板引擎

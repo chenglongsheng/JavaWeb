@@ -1,6 +1,6 @@
-package person.cls.qqzone.myssm.filter;
+package person.cls.myssm.filter;
 
-import person.cls.qqzone.myssm.trans.TransactionManager;
+import person.cls.myssm.trans.TransactionManager;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

@@ -10,5 +10,5 @@
         <!ATTLIST property ref IDREF #IMPLIED>
         ]>
 <beans>
-    <bean id="page" class="person.cls.qqzone.myssm.controller.PageController"/>
+    <bean id="page" class="person.cls.myssm.controller.PageController"/>
 </beans>

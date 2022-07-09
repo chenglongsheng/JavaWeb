@@ -1,4 +1,4 @@
-package person.cls.qqzone.myssm.exception;
+package person.cls.myssm.exception;
 
 /**
  * @description: DAO层运行时异常

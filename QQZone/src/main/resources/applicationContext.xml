@@ -41,7 +41,7 @@
         <property id="userBasicService" ref="userBasicService"/>
         <property id="topicService" ref="topicService"/>
     </bean>
-    <bean id="page" class="person.cls.qqzone.myssm.controller.PageController"/>
+    <bean id="page" class="person.cls.myssm.controller.PageController"/>
     <bean id="topic" class="person.cls.qqzone.controller.TopicController">
         <property id="topicService" ref="topicService"/>
     </bean>

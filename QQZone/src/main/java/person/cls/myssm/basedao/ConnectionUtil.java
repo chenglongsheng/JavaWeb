@@ -1,4 +1,4 @@
-package person.cls.qqzone.myssm.basedao;
+package person.cls.myssm.basedao;
 
 import java.io.IOException;
 import java.io.InputStream;
